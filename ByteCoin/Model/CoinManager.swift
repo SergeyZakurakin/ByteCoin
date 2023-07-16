@@ -14,6 +14,18 @@ struct CoinManager {
     let apiKey = "YOUR_API_KEY_HERE"
     
     let currencyArray = ["AUD", "BRL","CAD","CNY","EUR","GBP","HKD","IDR","ILS","INR","JPY","MXN","NOK","NZD","PLN","RON","RUB","SEK","SGD","USD","ZAR"]
-
+    
+    func getCoinPrice(for currency: String){
+        
+    }
+    
+    
+    func perfomRequest(urlString: String) {
+        var request = URLRequest(url: URL(string: baseURL)!)
+            
+        let tast = URLSession.shared.dataTask(with: request) { data, response, error in }
+            
+        }
+        
     
 }
