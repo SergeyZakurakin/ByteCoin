@@ -8,9 +8,11 @@
 import UIKit
 
 final class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
- 
     
-    let coinManager = CoinManager()
+    var coinManager = CoinManager()
+    
+  
+    
     
     //MARK: - UI
     
@@ -90,6 +92,9 @@ final class ViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
        
         currencyPicker.dataSource = self
         currencyPicker.delegate = self
+        
+        coinManager.delegate = self
+        
     }
 //MARK: - Setup View
     func setupView() {
@@ -110,7 +115,7 @@ final class ViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         
         topTitleLabel.text = "ByteCoin"
         currencyLabel.text = "..."
-        byteCoinLabel.text = "BTC"
+        byteCoinLabel.text = " USD"
 
 //        currencyPicker.delegate = self
         
@@ -169,6 +174,14 @@ extension ViewController {
     }
 }
 
+extension ViewController: CoinManagerDelegate {
+    
+    func didUpdateCoint(price: String) {
+        DispatchQueue.main.async {
+            self.currencyLabel.text = price
+        }
+    }
+}
 
 
 //MARK: - UIPickerViewDataSource
